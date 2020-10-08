@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Classic",
+        "type": "Armas Leves",
+        "description": "Leve e versátil, a arma padrão é um clássico inegável",
+        "image": "classic.png"
+    },
+    {
+        "name": "Shorty",
+        "type": "Armas Leves",
+        "description": "Surpreenda seus inimigos bem para obter o máximo de eficiência",
+        "image": "shorty.png"
+    },
+    {
+        "name": "Frenzy",
+        "type": "Armas Leves",
+        "description": "Leve e versátil, a arma padrão é um clássico inegável",
+        "image": "frenzy.png"
+    },
+    {
+        "name": "Ghost",
+        "type": "Armas Leves",
+        "description": "Leve e versátil, a arma padrão é um clássico inegável",
+        "image": "ghost.png"
+    },
+    {
+        "name": "Sheriff",
+        "type": "Armas Leves",
+        "description": "Leve e versátil, a arma padrão é um clássico inegável",
+        "image": "sheriff.png"
+    }
+    
+]
