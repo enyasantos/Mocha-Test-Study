@@ -27,8 +27,8 @@ router.get('/agents', (request, response) => {
 router.post('/agents', (request, response) => {
     try {
         const {
-            body: { name, nationality, role, skills, image },
-        } = request; 
+            name, nationality, role, skills, image,
+        } = request.body; 
         const imageURL = `${process.env.URL}/image/agents/${image}`;
         const currentContent = readFile();
         const id = Math.random().toString(32).substr(2, 9);
@@ -38,7 +38,8 @@ router.post('/agents', (request, response) => {
             nationality, 
             role, 
             skills, 
-            image:  imageURL});
+            image:  imageURL
+        });
         writeFile(currentContent);
         return response.status(201).send({ id, name, nationality, role, skills, image: imageURL });
     } catch (err) {

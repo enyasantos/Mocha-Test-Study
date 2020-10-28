@@ -9,6 +9,7 @@ chai.use(chaiHttp);
 
 describe("Agents lib", () => {
     describe("Agents", () => {
+        let idAgenteCreatedForTest;
         it("it should GET all the agents", (done) => {
             chai.request(server)
                 .get('/agents')
@@ -21,22 +22,23 @@ describe("Agents lib", () => {
         });
         it("it should POST one agent", (done) => {
             const agent = {
-                name: "Reyna",
+                name: "Cypher",
                 nationality: "México",
-                role: "Duelista",
+                role: "Marrocos",
                 skills: [
-                    "Dismiss",
-                    "Devour",
-                    "Leer",
-                    "Empress"
+                    "Cyber Cage",
+                    "Spycam",
+                    "Trampwire",
+                    "Neural Theft"
                 ],
-                image: "reyna.png"
+                image: "cypher.png"
             }
             const urlImage = `http://localhost:3001/image/agents/${agent.image}`;
             chai.request(server)
                 .post('/agents')
                 .send(agent)
                 .end((err, res) => {
+                    idAgenteCreatedForTest = res.body.id;
                     res.should.have.status(201);
                     res.body.should.be.a('object');
                     res.body.should.have.property('name').eql(agent.name);
@@ -49,7 +51,7 @@ describe("Agents lib", () => {
         });
         it("it should GET one agent", (done) => {
             const name = "Killjoy";
-            const id = 'oheu3dish';
+            const id = 'v4brkdo3u';
             chai.request(server)
                 .get(`/agent/${name}`)
                 .end((err, res) => {
@@ -65,7 +67,7 @@ describe("Agents lib", () => {
                 })
         });
         it("it should DELETE one agent", (done) => {
-            const id = 'po2n0gb49';
+            const id = idAgenteCreatedForTest;
             chai.request(server)
                 .delete(`/agents/${id}`)
                 .end((err, res) => {
@@ -76,19 +78,19 @@ describe("Agents lib", () => {
         });
         it("it should PUT one agent", (done) => {
             const updateAgent = {
-                name: "Reyna Update",
-                nationality: "México",
-                role: "Duelista",
+                name: "Raze",
+                nationality: "Brasil",
+                role: "Dualista",
                 skills: [
-                  "Dismiss",
-                  "Devour",
-                  "Leer",
-                  "Empress"
+                    "Blast Pack",
+                    "Paint SHells",
+                    "Boom Bot",
+                    "Showstopper"
                 ],
-                image: "reyna.png"
+                image: "raze.png"
             };
             const urlImage = `http://localhost:3001/image/agents/${updateAgent.image}`;
-            const id = '89dm2t93j';
+            const id = 'cr9jjokt3';
             chai.request(server)
                 .put(`/agents/${id}`)
                 .send(updateAgent)
