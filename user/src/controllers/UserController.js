@@ -9,7 +9,7 @@ module.exports =  {
     async index(req, res){
         try {
             const users = await UsersModel.find();
-            return res.json(users);
+            return res.status(200).json(users);
         } catch {
             return res.status(400).json({ message: 'Erro ao carregar dados dos usuários.'});
         }
@@ -64,13 +64,14 @@ module.exports =  {
             });
 
             return res.status(201).json({ 
-                user, 
+                id: user._id,
                 message: 'Usuário cadastrado com sucesso.',
                 token: generateToken({ id: user._id }),
             });
 
-        } catch {
-            return res.status(400).json({ message: 'Erro ao cadastrar usuário.'});
+        } catch (err){
+            
+            return res.status(400).json(err);
         }
     },
     async update(req, res){

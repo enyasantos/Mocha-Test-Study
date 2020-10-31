@@ -17,7 +17,7 @@ module.exports = {
         if(!match)
             return res.status(400).json({ message: "Senha inválida." });
 
-        res.send({ 
+        return res.status(200).send({ 
             user, 
             token: generateToken({ id: user._id }),
         })

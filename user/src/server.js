@@ -15,3 +15,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(3001, () => console.log('🔥 Servidor rodando na porta 3001'));
+
+module.exports = app;
